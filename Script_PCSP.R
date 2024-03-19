@@ -609,11 +609,18 @@ if (!requireNamespace("stringi", quietly = TRUE)) {
 }
 library(stringi)
 
-# Assuming campos_final is your dataframe
-# Loop through each column and remove accents from the values
+#species list final
 campos_final2<-campos_final
 for (col in names(campos_final2)) {
   campos_final2[[col]] <- stri_trans_general(campos_final2[[col]], "Latin-ASCII")
 }
 
 write.csv2(campos_final2, file = "list_species_pcs.csv")
+
+#Vouchers final
+list_campos3<-list_campos2
+for (col in names(list_campos3)) {
+  list_campos3[[col]] <- stri_trans_general(list_campos3[[col]], "Latin-ASCII")
+}
+
+write.csv2(list_campos3, file = "vouchers_pcs.csv")
